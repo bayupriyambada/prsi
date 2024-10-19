@@ -9,4 +9,12 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateContact extends CreateRecord
 {
     protected static string $resource = ContactResource::class;
+
+    protected function getActions(): array
+    {
+        return [
+            // Menonaktifkan tombol create secara kondisional
+            $this->makeCreateAction()->disabled(fn() => true),
+        ];
+    }
 }

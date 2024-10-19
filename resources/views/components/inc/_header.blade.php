@@ -6,7 +6,7 @@
         <div class="flex items-center justify-between">
             <a class="flex-none font-semibold text-xl text-black focus:outline-none focus:opacity-80"
                 href="{{ route('home') }}" aria-label="Brand">
-                <img src="{{ asset('img/prsi.png') }}" alt="" class="w-16">
+                <img src="{{ asset('img/prsi.png') }}" alt="logo" class="w-16">
             </a>
 
             <!-- Collapse Button -->
@@ -49,47 +49,6 @@
                     <x-custom.shared.ahref href="{{ route('structural-organization') }}"
                         title="Struktur Organisasi"></x-custom.shared.ahref>
                     <x-custom.shared.ahref href="{{ route('contactus') }}" title="Kontak Kami"></x-custom.shared.ahref>
-
-                    <!-- Dropdown -->
-                    {{-- <div
-                        class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] [--is-collapse:true] md:[--is-collapse:false] ">
-                        <button id="hs-header-classic-dropdown" type="button"
-                            class="hs-dropdown-toggle w-full p-2 flex items-center text-sm text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 "
-                            aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                            <svg class="shrink-0 size-4 me-3 md:me-2 block md:hidden"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="m3 10 2.5-2.5L3 5" />
-                                <path d="m3 19 2.5-2.5L3 14" />
-                                <path d="M10 6h11" />
-                                <path d="M10 12h11" />
-                                <path d="M10 18h11" />
-                            </svg>
-                            Berita
-                            <svg class="hs-dropdown-open:-rotate-180 md:hs-dropdown-open:rotate-0 duration-300 shrink-0 size-4 ms-auto md:ms-1"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="m6 9 6 6 6-6" />
-                            </svg>
-                        </button>
-
-                        <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 relative w-full md:w-52 hidden z-10 top-full ps-7 md:ps-0 md:bg-white md:rounded-lg md:shadow-md before:absolute before:-top-4 before:start-0 before:w-full before:h-5 md:after:hidden after:absolute after:top-1 after:start-[18px] after:w-0.5 after:h-[calc(100%-0.25rem)] after:bg-gray-100 "
-                            role="menu" aria-orientation="vertical" aria-labelledby="hs-header-classic-dropdown">
-                            <div class="py-1 md:px-1 space-y-0.5">
-                                <a class="py-1.5 px-2 flex items-center text-sm text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 "
-                                    href="#">
-                                    Semua Berita
-                                </a>
-                                <a class="py-1.5 px-2 flex items-center text-sm text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 "
-                                    href="#">
-                                    Berita Per Daerah
-                                </a>
-
-                            </div>
-                        </div>
-                    </div> --}}
                     <!-- End Dropdown -->
 
                     <!-- Button Group -->
