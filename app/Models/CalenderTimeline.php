@@ -16,11 +16,8 @@ class CalenderTimeline extends Model
         'category',
         'district',
         'country',
-        'year_calender_timeline_id',
+        'document',
     ];
 
-    public function yearCalenderTimeline()
-    {
-        return $this->belongsTo(YearCalenderTimeline::class);
-    }
+  
 }

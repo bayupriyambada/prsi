@@ -9,8 +9,10 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\CalenderTimeline;
 use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
 use App\Models\YearCalenderTimeline;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -39,10 +41,9 @@ class CalenderTimelineResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('country')
                     ->maxLength(255),
-                Forms\Components\Select::make('year_calender_timeline_id')
-                    ->relationship(name: 'yearCalenderTimeline', titleAttribute: 'year')
-                    ->native(false),
-
+                FileUpload::make('document')->required()->maxSize(2048)
+                ->directory('documents/calender_timeline')
+                ->acceptedFileTypes(['application/pdf']),
             ]);
     }
 
@@ -88,15 +89,19 @@ class CalenderTimelineResource extends Resource
 
             ])->defaultSort('created_at', 'desc')
             ->filters([
-                SelectFilter::make('year_calender_timeline_id')
-                    ->relationship('yearCalenderTimeline', 'year')
-                    ->label('Year')
-                    ->getOptionLabelUsing(fn($record) => $record->year),
+            
 
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Action::make('document')
+                ->label('View PDF')
+                ->url(fn ($record) => $record->document ? asset('storage/' . $record->document) : null)
+                ->openUrlInNewTab()
+                ->color('primary')
+                ->icon('heroicon-o-document-text')
+                ->disabled(fn ($record) => !$record->document), // Nonaktifkan jika tidak ada PDF
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

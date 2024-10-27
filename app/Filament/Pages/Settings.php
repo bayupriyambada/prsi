@@ -6,17 +6,26 @@ use Filament\Forms;
 use App\Models\Setting;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
 use Filament\Notifications\Notification;
+use Filament\Forms\Components\FileUpload;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 
 class Settings extends Page
 {
+
+    use HasPageShield;
+
+    public static function canView(): bool
+    {
+        return Auth::user()->hasRole('admin');
+    }
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.pages.settings';

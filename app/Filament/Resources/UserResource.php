@@ -42,6 +42,7 @@ class UserResource extends Resource
                 Forms\Components\Select::make('roles')
                     ->relationship('roles', 'name')
                     ->preload()
+                    ->multiple()
                     ->searchable(),
                 Forms\Components\Select::make('regional_branch_id')
                     ->relationship('regional', 'name')

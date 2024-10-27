@@ -60,4 +60,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(RegionalBranch::class, 'regional_branch_id', 'id');
     }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->hasRole(Utils::getSuperAdminName()) || $this->hasRole(Utils::getPanelUserRoleName());
+    }
 }

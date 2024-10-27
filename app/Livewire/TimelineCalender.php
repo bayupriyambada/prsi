@@ -15,8 +15,6 @@ class TimelineCalender extends Component
         $groupTimelineCalenders = $timelineCalenders->groupBy(function ($item) {
             return Carbon::parse($item->date)->format('F Y');
         });
-
-        // dd($groupTimelineCalenders);
         return view('livewire.timeline-calender', compact('groupTimelineCalenders'));
     }
 }
