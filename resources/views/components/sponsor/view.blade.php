@@ -16,7 +16,7 @@
             </h4>
         </div>
         <div class="bg-white shadow rounded-sm p-4 mt-4">
-            <div class="grid lg:grid-cols-8 md:grid-cols-6 grid-cols-3 gap-3">
+            <div class="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-3">
                 @foreach ($sponsorshipData as $item)
                     <x-custom.sponsorship-image :sponsorship="$item" :textAlt="$sponsorship === 'sponsors' ? 'Sponsor' : 'Co-Sponsor'" />
                 @endforeach
