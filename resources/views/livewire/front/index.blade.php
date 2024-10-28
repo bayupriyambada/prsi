@@ -14,7 +14,7 @@
 
         <!-- sponsor -->
         <div class="md:px-0 px-5">
-            <x-sponsor.view :sponsorship="'sponsors'" :sponsors="$sponsors" />
+            {{-- <x-sponsor.view :sponsorship="'sponsors'" :sponsors="$sponsors" /> --}}
             <x-sponsor.view :sponsorship="'coSponsors'" :coSponsors="$coSponsors" />
         </div>
         <!-- sponsor -->
