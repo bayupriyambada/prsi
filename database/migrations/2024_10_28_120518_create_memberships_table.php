@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone'); // No Hp
             $table->string('job'); // Job
             $table->text('reason'); // Alasan
-            $table->enum('shirt_size', ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']); // Kemeja
+            $table->enum('shirt_size', allowed: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']); // Kemeja
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
             $table->timestamps();
         });
