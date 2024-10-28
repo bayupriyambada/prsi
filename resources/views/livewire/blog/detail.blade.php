@@ -1,5 +1,32 @@
 @section('title', $blog['title'])
 
+@push('seo')
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ Str::limit($blog['body'], 150) }}">
+    <meta name="keywords" content="nama situs, {{ $blog['title'] }}, kategori">
+    <meta name="author" content="{{ $blog['user']['name'] }}">
+
+    <!-- Open Graph Tags (Facebook, Instagram, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="{{ $blog['title'] }}">
+    <meta property="og:description" content="{{ Str::limit($blog['body'], 150) }}">
+    <meta property="og:image" content="{{ asset('storage/' . $blog['image']) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="PRSI">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $blog['title'] }}">
+    <meta name="twitter:description" content="{{ Str::limit($blog['body'], 150) }}">
+    <meta name="twitter:image" content="{{ asset('storage/' . $blog['image']) }}">
+    <meta name="twitter:site" content="@PRSI">
+    
+    <!-- WhatsApp and Other Messaging Platforms -->
+    <meta property="og:image" content="{{ asset('storage/' . $blog['image']) }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+@endpush
+
 <div>
     <div class="flex flex-col space-y-4 max-w-6xl lg:px-0 px-5 container mx-auto my-4">
         <ol class="flex items-center whitespace-nowrap">
@@ -10,7 +37,7 @@
             ]" />
         </ol>
         <div class="bg-white shadow rounded p-4">
-            <img src="{{ asset('storage/' . $blog['image']) }}" class="w-full h-[550px] object-fill rounded shadow"
+            <img src="{{ asset('storage/' . $blog['image']) }}" class="w-full lg:h-[550px] h-full object-fill rounded shadow"
                 alt="{{ $blog['title'] }}">
         </div>
         <div class="bg-white shadow rounded-sm p-4 my-5">
