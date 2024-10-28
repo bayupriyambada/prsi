@@ -21,7 +21,7 @@
                     <x-custom.sponsorship-image :sponsorship="$item" :textAlt="$sponsorship === 'sponsors' ? 'Sponsor' : 'Co-Sponsor'" />
                 @endforeach
             </div> --}}
-            <img src="{{ asset('img/sponsor.jpg') }}" alt="Sponsor" class="w-full h-full object-contain">
+            <img src="{{ asset('img/sponsor.jpg') }}" alt="Sponsor" class="w-full h-64 object-contain">
         </div>
     </div>
 </div>
