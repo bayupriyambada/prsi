@@ -1,11 +1,11 @@
-@section('title', 'Membership')
+@section('title', 'Keanggotaan')
 
 <div>
     <!-- Card Section -->
     <div class="lg:max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="bg-white shadow rounded p-4 mb-3">
             <h1 class="text-2xl font-bold text-gray-800 sm:text-3xl text-center ">
-                Pendaftaran Member PRSI
+                Pendaftaran Anggota PRSI
             </h1>
         </div>
 
@@ -203,7 +203,7 @@
                     <div class="mt-5 flex  w-full justify-center gap-x-2">
                         <button type="submit"
                             class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                            Daftar Sebagai Member
+                            Daftar Sebagai Anggota
                         </button>
                     </div>
                 </div>
