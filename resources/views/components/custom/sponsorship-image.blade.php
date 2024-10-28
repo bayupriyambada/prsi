@@ -1,5 +1,5 @@
 @props(['sponsorship', 'textAlt'])
 <div>
-    <img src="{{ asset('storage/' . $sponsorship->image) }}" class="md:w-32 md:h-32 h-20 w-20"
+    <img src="{{ asset('storage/' . $sponsorship->image) }}" class="md:w-full md:h-16 h-16 w-full object-fill"
         alt="{{ $textAlt }}-{{ $sponsorship->image }}" />
 </div>
