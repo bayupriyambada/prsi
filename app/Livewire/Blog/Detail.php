@@ -18,7 +18,11 @@ class Detail extends Component
 
     public function detailBlog($slug)
     {
+
         $blog = Blog::with(['user', 'category'])->isPublished(true)->where('slug', $slug)->firstOrFail();
+        $ipAddress = request()->ip(); // Dapatkan IP address pengunjung
+        $blog->incrementViews($ipAddress); // Menambah views jika IP belum ada
+        // dd($blog);
         $this->blog = (new BlogDetailResource($blog))->toArray(request());
     }
 

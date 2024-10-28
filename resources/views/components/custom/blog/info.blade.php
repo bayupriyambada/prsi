@@ -28,4 +28,9 @@
             {{ implode(', ', $blog['tags']) }}
         </span>
     </x-custom.blog.info-list>
+    <x-custom.blog.info-list :text="'Views'">
+        <span class="font-semibold">
+            {{ $blog['views'] }} {{ Str::plural('View', $blog['views']) }}
+        </span>
+    </x-custom.blog.info-list>
 </ul>

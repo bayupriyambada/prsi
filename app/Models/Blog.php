@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\BlogView;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -45,5 +46,22 @@ class Blog extends Model
         static::creating(function ($post) {
             $post->user_id = Auth::id();
         });
+    }
+
+    public function incrementViews($ipAddress)
+    {
+        // Cek apakah IP sudah ada dalam blog_views
+        if (!$this->hasViewed($ipAddress)) {
+            $this->increment('views'); // Increment views
+            BlogView::create([
+                'blog_id' => $this->id,
+                'ip_address' => $ipAddress,
+            ]);
+        }
+    }
+
+    public function hasViewed($ipAddress)
+    {
+        return BlogView::where('blog_id', $this->id)->where('ip_address', $ipAddress)->exists();
     }
 }

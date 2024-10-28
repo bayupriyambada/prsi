@@ -48,7 +48,9 @@
                 <div class="mt-1 flex space-x-3 items-center">
                     <x-custom.blog.info :blog="$blog" :textSize="'sm'" />
                 </div>
+                
             </div>
+
         </div>
 
         <x-custom.shared.share-link :url="url()->current()" :title="$blog['title']" />

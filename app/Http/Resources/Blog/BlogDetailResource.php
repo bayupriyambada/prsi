@@ -27,6 +27,7 @@ class BlogDetailResource extends JsonResource
                 'regional' => $this->user->regional->name ?? 'Pusat',
             ],
             'tags' => $this->tags,
+            'views' => $this->views,
             'created_at' => $this->created_at
         ];
     }
