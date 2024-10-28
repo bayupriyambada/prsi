@@ -2,13 +2,13 @@
 
 @push('seo')
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{{ Str::limit($blog['body'], 150) }}">
+    <meta name="description" content="{{ Str::limit(strip_tags($blog['body']), 150) }}">
     <meta name="keywords" content="nama situs, {{ $blog['title'] }}, kategori">
     <meta name="author" content="{{ $blog['user']['name'] }}">
 
     <!-- Open Graph Tags (Facebook, Instagram, LinkedIn, WhatsApp) -->
     <meta property="og:title" content="{{ $blog['title'] }}">
-    <meta property="og:description" content="{{ Str::limit($blog['body'], 150) }}">
+    <meta property="og:description" content="{{ Str::limit(strip_tags($blog['body']), 150) }}">
     <meta property="og:image" content="{{ asset('storage/' . $blog['image']) }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="article">
@@ -17,7 +17,7 @@
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $blog['title'] }}">
-    <meta name="twitter:description" content="{{ Str::limit($blog['body'], 150) }}">
+    <meta name="twitter:description" content="{{ Str::limit(strip_tags($blog['body']), 150) }}">
     <meta name="twitter:image" content="{{ asset('storage/' . $blog['image']) }}">
     <meta name="twitter:site" content="@PRSI">
     
@@ -29,7 +29,7 @@
 
 <div>
     <div class="flex flex-col space-y-4 max-w-6xl lg:px-0 px-5 container mx-auto my-4">
-        <ol class="flex items-center whitespace-nowrap">
+        <ol class="flex items-center lg:whitespace-nowrap ">
             <x-custom.breadcrumb-view :links="[
                 ['label' => 'Home', 'url' => route('home')],
                 ['label' => 'Blog', 'url' => route('blogs')],
