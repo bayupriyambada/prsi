@@ -2,19 +2,23 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Membership;
+use Filament\Tables\Table;
+use App\Models\ManageMember;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Actions\BulkAction;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Tables\Actions\BulkActionGroup;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ManageMemberResource\Pages;
 use App\Filament\Resources\ManageMemberResource\RelationManagers;
-use App\Models\ManageMember;
-use App\Models\Membership;
-use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ManageMemberResource extends Resource
 {
@@ -33,8 +37,23 @@ class ManageMemberResource extends Resource
                 TextInput::make('address')->required(),
                 TextInput::make('job')->required(),
                 TextInput::make('reason')->required(),
-                TextInput::make('photo')->required(),
-                TextInput::make('ktp')->required(),
+                FileUpload::make('photo')->columnSpanFull()
+                ->image()
+                ->disk('public') // Pastikan ini sesuai
+                ->optimize('webp', 'jpg', 'png')
+                ->resize(50)
+                ->directory('memberships/photos')
+                ->required()
+                ->previewable(true),
+                FileUpload::make('ktp')->columnSpanFull()
+                ->image()
+                ->disk('public') // Pastikan ini sesuai
+
+                ->optimize('webp', 'jpg', 'png')
+                ->directory('memberships/ktp')
+                ->resize(50)
+                ->required()
+                ->previewable(true),
                 Select::make('shirt_size')->options([
                     's' => 'S',
                     'm'=> 'M',
@@ -62,10 +81,26 @@ class ManageMemberResource extends Resource
                 Tables\Columns\TextColumn::make('address'),
             ])
             ->filters([
-                //
+                
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+               BulkActionGroup::make([
+                   Tables\Actions\EditAction::make(),
+                Action::make('photo')
+                ->label('View Photo')
+                ->url(fn ($record) => $record->photo ? asset('storage/' . $record->photo) : null)
+                ->openUrlInNewTab()
+                ->color('primary')
+                ->icon('heroicon-o-document-text')
+                ->disabled(fn ($record) => !$record->photo),
+                Action::make('ktp')
+                ->label('View KTP')
+                ->url(fn ($record) => $record->ktp ? asset('storage/' . $record->ktp) : null)
+                ->openUrlInNewTab()
+                ->color('primary')
+                ->icon('heroicon-o-document-text')
+                ->disabled(fn ($record) => !$record->ktp),
+               ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
