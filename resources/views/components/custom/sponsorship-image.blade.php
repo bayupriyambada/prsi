@@ -1,5 +1,6 @@
 @props(['sponsorship', 'textAlt'])
 <div class="flex justify-center items-center">
-    <img src="{{ asset('storage/' . $sponsorship->image) }}" class="object-fit" style="height: 80px; width: 100%"
-        alt="{{ $textAlt }}-{{ $sponsorship->image }}" />
+    <img src="{{ asset('storage/' . $sponsorship->image) }}" 
+         class="lg:h-16 h-16 w-full object-contain" 
+         alt="{{ $textAlt }}-{{ $sponsorship->image }}" />
 </div>
