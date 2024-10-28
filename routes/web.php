@@ -4,6 +4,7 @@ use App\Livewire\Blog\Detail as BlogDetail;
 use App\Livewire\ContactUs;
 use App\Livewire\Front\Blog;
 use App\Livewire\Front\Index;
+use App\Livewire\Front\Membership;
 use App\Livewire\Gallery;
 use App\Livewire\OrganizationalStructure;
 use App\Livewire\RegionalBranch;
@@ -18,3 +19,5 @@ Route::get('/timeline-calender', TimelineCalender::class)->name('timeline-calend
 Route::get('/regional-branches', RegionalBranch::class)->name('regional-branches');
 Route::get('/structural-organization', OrganizationalStructure::class)->name('structural-organization');
 Route::get('/contact-us', ContactUs::class)->name('contactus');
+
+Route::get('/membership', Membership::class)->name('membership');
