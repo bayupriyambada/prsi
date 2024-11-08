@@ -15,7 +15,7 @@ class Index extends Component
     public function render()
     {
         $sliders = Sliders::get();
-        $regionalBranches = RegionalBranch::limit(8)->orderBy('created_at', 'asc')->get();
+        $regionalBranches = RegionalBranch::orderBy('created_at', 'asc')->get();
         $sponsors = Sponsor::where('status', 'sponsor')->get();
         $coSponsors = Sponsor::where('status', 'co-sponsor')->get();
 
